@@ -70,12 +70,12 @@ def logout(request):
 
 def dashboard(request):
     user_detail = UserDetails.objects.filter(user=request.user).last()
+    if request.user.is_superuser:
+        return HttpResponseRedirect("/admin_dashboard")
     if user_detail.is_dealer:
         return HttpResponseRedirect("/dealer_dashboard")
     if user_detail.is_customer:
         return HttpResponseRedirect("/customer_dashboard")
-    if request.user.is_superuser:
-        return HttpResponseRedirect("/admin_dashboard")
 
 def dealer_login(request):
     response = render(request, "Main/dealer_login.html")
