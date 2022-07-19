@@ -4,7 +4,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '5cog=)a*)*gz1hot*9@%2xi)+&n&dmpr=64jo$bocj008y3kfc'
 DEBUG = True
 
-ALLOWED_HOSTS = ['finance-test-1.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
