@@ -1,0 +1,458 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+
+    <link rel="shortcut icon" href="{% static 'logo.png' %}" type="image/x-icon">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+        .hero_section{
+            display: flex;
+            align-items: center;
+            padding-top: 20px;
+            padding-top: 110px;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+        }
+        .hero_section h1{
+            font-size: 45px;
+            margin: 15px 0px;
+            color: rgb(79,68,224);
+        }
+        .hero_section .text p{
+            font-size: 23px;
+        }
+        .hero_section .text{
+            width: 50%;
+            margin-right: 40px;
+        }
+        .hero_section .image img{
+            height: 70vh;
+        }
+        .hero_section button{
+            background-color: rgb(79,68,224);
+            border: solid 2px rgb(79,68,224);
+            padding: 15px 0px;
+            transition: 0.6s;
+            width: 70%;
+            margin: 20px 0px;
+            font-weight: 500;
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 30px;
+        }
+        .hero_section button a{
+            color: white;
+            transition: 0.6s;
+            text-decoration: none;
+        }
+        .hero_section button:hover{
+            background-color: transparent;
+        }
+        .hero_section button:hover > a{
+            color: rgb(79,68,224);
+        }
+        .features{
+            width: 100%;
+            padding: 100px 50px;
+            background-color: rgb(79,68,224);
+            margin-top: 50px;
+            position: relative;
+            z-index: -10;
+            padding-bottom: 50vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .features-title{
+            letter-spacing: 1px;
+            font-size: 40px;
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            color: white;
+        }
+        .row{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .features-row{
+            width: 85%;
+        }
+        .features-item{
+            margin-top: 40px;
+            background-color: white;
+            width: 25vw;
+            display: flex;
+            border-radius: 10px;
+            padding: 40px 20px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .features .features-item .icon i{
+            font-size: 50px;
+            color: rgb(79,68,224);
+            text-align: center;
+        }
+        .features-item .image img{
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+        .features-item .text{
+            color: black;
+        }
+        .features-item .text h3{
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 1px;
+            margin-top: 13px;
+            margin-bottom: 9px;
+            text-align: center;
+            font-size: 25px;;
+        }
+        .features-item .text p{
+            text-align: center;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .features-item .text button{
+            background-color: rgb(79,68,224);
+            border: solid 2px rgb(79,68,224);
+            padding: 10px 0px;
+            transition: 0.6s;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 30px;
+        }
+        .features-item .text button a{
+            color: white;
+            transition: 0.6s;
+            text-decoration: none;
+        }
+        .features-item .text button:hover{
+            background-color: transparent;
+        }
+        .features-item .text button:hover > a{
+            color: rgb(79,68,224);
+        }
+        .about-us{
+            display: flex;
+            padding: 40px;
+            justify-content: space-between;
+        }
+        .about-us .image{
+            width: 350%;
+            margin-right: 40px;
+            height: 60vh;
+        }
+        .about-us .image img{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        .about-us .text p{
+            text-align: justify;
+            margin-top: 25px;
+            font-family: "Poppins", sans-serif;
+        }
+        .about-us .text h1{
+            font-family: 'Outfit', sans-serif;
+        }
+        .about-us button{
+            background-color: transparent;
+            border: solid 2px rgb(79,68,224);
+            padding: 10px 60px;
+            transition: 0.6s;
+            margin: 20px 0px;
+            font-weight: 500;
+            font-size: 17px;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 30px;
+        }
+        .about-us button a{
+            color: rgb(79,68,224);
+            transition: 0.6s;
+            text-decoration: none;
+        }
+        .about-us button:hover{
+            background-color: rgb(79,68,224);
+        }
+        .about-us button:hover > a{
+            color: white;
+        }
+        .footer{
+            display: flex;
+            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgb(231, 231, 231);
+        }
+        .footer i{
+            font-size: 20px;
+            margin-right: 5px;
+        }
+        .footer-div-1{
+            display: flex;
+        }
+        .footer-div-1 p a{
+            color: black;
+            margin: 0px 10px;
+        }
+        .contact{
+            width:100%;
+            padding: 40px 0px;
+            background-color: rgb(79,68,224);
+            text-align: center;
+            margin-top: 50px;
+
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+        .contact h2{
+            font-size: 35px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-family: 'Raleway', sans-serif;
+        }
+        .contact p{
+            font-size: 20px;
+        }
+        .search-mob{
+            display: none;
+        }
+        .contact form{
+            margin-top: 20px;
+        }
+        .contact form input, textarea{
+            width: 40vw;
+            padding: 10px;
+            color: white;
+            margin: 5px 0px;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 8px;
+            border: 1px solid white;
+            background-color: transparent;
+        }
+        .contact form input::placeholder, textarea::placeholder{
+            color: white;
+            font-size: 16px;
+        }
+        .contact form input:focus, textarea:focus{
+            outline: none
+        }
+        .contact form button{
+            text-align: center;
+            width: 40vw;
+            padding: 15px 0px;
+            border: 2px solid white;
+            background-color: white;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+        }
+        .features::before {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0%;
+    height: 100%;
+    width: 100%;
+    background: url("{% static 'item-shape.svg' %}") no-repeat center bottom;
+    background-size: contain;
+    z-index: 1;
+  }
+        .swal-text{
+            font-family: 'Poppins', sans-serif;
+            color: black;
+        }
+        @media (max-width: 800px){
+            .features{
+                height: max-content;
+                padding: 50px 0px;
+            }
+            .features::before{
+                display: none;
+            }
+            .hero_section{
+                flex-direction: column-reverse;
+            }
+            .hero_section .image img{
+                width: 100%;
+                height: 40vh;
+                object-fit: cover;
+            }
+            .hero_section .text h1{
+                font-size: 30px;
+            }
+            .hero_section .text p{
+                font-size: 20px;
+                margin: 10px 0px;
+                text-align: center;
+            }
+            .hero_section button{
+                width: 100%;
+                padding: 15px 0px;
+            }
+            .hero_section .text{
+                width: 100%;
+                padding: 0px 15px;
+                margin-right: 0px;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                text-align: center;
+            }
+            .row{
+                flex-direction: column;
+            }
+            .features-item{
+                width: 100%;
+            }
+            .about-us{
+                flex-direction: column ;
+            }
+            .about-us .image{
+                width: 100%;
+                height: 40vh;
+                margin-bottom: 25px;
+            }
+            .footer{
+                flex-direction: column;
+            }
+            .footer div{
+                margin: 10px 0px;   
+            }
+            .contact form input,textarea{
+                width: 90vw;
+            }
+            .contact p{
+                font-size: 17px;
+            }
+            .contact h2{
+                font-size: 29px;
+            }
+            .contact form button{
+                width:90%;
+            }
+        }
+    </style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% endblock head %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+
+    <div class="hero_section">
+        <div class="text">
+            <h1>SMS Financial Services</h1>
+            <p>Easy To Use Website For Dealers, Company Owners And Customers To Manage EMIs Easily Without Complex Processes</p>
+            <button> <a href="#">Get Started</a></button>
+        </div>
+        <div class="image">
+            <img src="{% static 'hero_image.svg' %}" alt="">
+        </div>
+    </div>
+
+    <div class="features" id="features">
+        <h1 class="features-title">Our Features</h1>
+        <div class="row features-row">
+            
+            <div class="features-item">
+                <div class="icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="text">
+                    <h3>Online - Shopping</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolorem nihil atque et voluptate odio saepe quisquam minus, delectus odi</p>
+                    <button><a href="#">Start Shopping</a></button>
+                </div>
+            </div>
+            
+            <div class="features-item">
+                <div class="icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <div class="text">
+                    <h3>Mutual Funds</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolorem nihil atque et voluptate odio saepe quisquam minus, delectus odi</p>
+                    <button><a href="#">Start Investing</a></button>
+                </div>
+            </div>
+            
+            <div class="features-item">
+                <div class="icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="text">
+                    <h3>Insaurance</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolorem nihil atque et voluptate odio saepe quisquam minus, delectus odi</p>
+                    <button><a href="#">Get One</a></button>
+                </div>
+            </div/>
+
+        </div>
+    </div>
+
+    <div class="about-us" id="about">
+        <div class="image">
+            <img src="{% static 'about-us.jpg' %}" data-large="{% static 'about-us.jpg' %}" class="blurry-load" alt="">
+        </div>
+        <div class="text">
+            <h1 class="about-us-title">Know More About Us</h1>
+            <p class="about-us-para">SMS FINANCIAL SERVICES (SFS)is a leading non-banking Financial Services that caters to the growing needs of an aspiration in cooch behar District  serving both indiviual Product loan. We offer a wide range of secure and unsecurred product loans to our customer. Originally incorporated as SMS Financial Services  on Nov 13, 2020, the non-bank singularly focused on providing product loan finance. To empower Distric in cooch behar to dream bigger, secure in the knowledge that we are partners in the fulfillment of their aspirations</p>
+        </div>
+    </div>
+
+    <div class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>You Can Also Contact Us On +91 9832074205 Or financesms9@gmail.com</p>
+        <form method="post">
+            {% if success %}
+                <script>
+                    swal("Thank You", "Thanks For Contacting Us, We Will Reply Your Message Very Soon.", "success")
+                </script>
+            {% endif %}
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Enter Your Full Name"><br>
+            <input type="text" name="subject" placeholder="Why You Want To Contact Us ?"><br>
+            <input type="email" name="email" placeholder="Enter Your Email Address"><br>
+            <textarea name="message" cols="30" rows="10" placeholder="Your Message"></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>    
+
+    <div class="footer">
+        <div class="footer-div-1">
+            <p><a href="#">Terms & Conditions</a></p>
+            <p> | </p>
+            <p><a href="#">Privacy Policy</a></p>
+        </div>
+        <p>© 2021 SMS Financial Services</p>
+        <div>
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+        </div>
+    </div>
+
+    <script src="{% static 'blurry-load.min.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'blurry-load.min.css' %}" />
+
+    <script>
+        const blurryImageLoad = new BlurryImageLoad();
+        blurryImageLoad.load();
+    </script>
+
+{% endblock body %}

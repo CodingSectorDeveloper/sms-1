@@ -1,0 +1,40 @@
+{% extends "dealer_dashboard.html" %}
+
+{% block title %} Emi(s) {% endblock %}
+
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <div class="space-between">
+        <h1>Emi(s)</h1>
+        <a href="/dealer_dashboard/submit_emi"><i class="plus-icon fas fa-plus"></i></a>
+    </div>
+    <div class="container-div" style="margin-top: 20px;">
+        {% for i in emis %}
+        <div class="space-between">
+            <p style="margin: 5px 0px;">{{forloop.counter}}. <a style="color: black; text-decoration: none;">{{i.enrollment_id}} - &#8377; {{i.amount}}</a></p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}

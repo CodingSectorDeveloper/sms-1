@@ -1,0 +1,99 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Profit & Loss {% endblock %}
+
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <h1>Profit & Loss</h1>
+    <hr>
+    <div class="charts__right__cards">
+        <div class="card2">
+            <h1>Profit</h1>
+            <h3>&#8377; {{profit}}</h1>
+        </div>
+        <div class="card4">
+            <h1>Loss</h1>
+            <h3>&#8377; {{loss}}</h1>
+        </div>
+        <div class="card1">
+            <h1>Investment</h1>
+            <h3>&#8377; {{investment}}</h1>
+        </div>
+        <div class="card3">
+            <h1>Income</h1>
+            <h3>&#8377; {{income}}</h1>
+        </div>
+    </div>
+    <h1 style="margin-top: 20px;">Income Details</h1>
+    <hr>
+        <div class="container-div" style="margin-top: 20px;">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Loan Amount</th>
+                    <th>Paid Off Amount</th>
+                    <th>Amount Left</th>
+                </tr>
+                {% for i in enrollmentaccounts %}
+                <tr>
+                    <td>{{i.enrollment.first_name}} {{i.enrollment.last_name}}</td>
+                    <td>{{i.enrollment.total_amount}}</td>
+                    <td>{{i.amount_paid}}</td>
+                    <td>{{i.amount_left}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div> 
+    <h1 style="margin-top: 20px;">EMI Details</h1>
+    <hr>
+        <div class="container-div" style="margin-top: 20px;">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Amount</th>
+                </tr>
+                {% for i in emis %}
+                <tr>
+                    <td>{{i.enrollment_id}}</td>
+                    <td>{{i.amount}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div> 
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}

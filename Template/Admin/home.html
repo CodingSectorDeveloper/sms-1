@@ -1,0 +1,76 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+<div class="main__container">
+    <!-- MAIN TITLE STARTS HERE -->
+
+    <div class="main__title">
+      <img src="assets/hello.svg" alt="" />
+      <div class="main__greeting">
+        <h1>Hello {{request.user.username}}</h1>
+        <p>Welcome to your dashboard</p>
+      </div>
+    </div>
+
+    <!-- MAIN TITLE ENDS HERE -->
+
+    <!-- MAIN CARDS STARTS HERE -->
+    <div class="main__cards">
+      <div class="card">
+        <span class="font-bold text-title">{{dealernum}}</span>
+        <div class="card_inner">
+          <p class="text-primary-p">Number of Dealers</p>
+        </div>
+      </div>
+
+      <div class="card">
+          <span class="font-bold text-title">{{enrollnum}}</span>
+        <div class="card_inner">
+          <p class="text-primary-p">Number of Enrollments</p>
+        </div>
+      </div>
+      <div class="card">
+          <span class="font-bold text-title">{{msgnum}}</span>
+        <div class="card_inner">
+          <p class="text-primary-p">Number of Messages</p>
+        </div>
+      </div>
+      </div>
+    <!-- MAIN CARDS ENDS HERE -->
+
+    <!-- CHARTS STARTS HERE -->
+    <div class="charts">
+
+      <div class="charts__right">
+        <div class="charts__right__title">
+          <div>
+            <h1>Statistics</h1>
+          </div>
+        </div>
+
+        <div class="charts__right__cards">
+          <div class="card4">
+            <h1>Income</h1>
+            <p>&#8377;{{income}}</p>
+          </div>
+
+          <div class="card3">
+            <h1>Invesments</h1>
+            <p>&#8377;{{invested}}</p>
+          </div>
+          <div class="card1">
+            <h1>Users</h1>
+            <p>{{users}}</p>
+          </div>
+          <div class="card2">
+            <h1>Customers</h1>
+            <p>{{enrollnum}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CHARTS ENDS HERE -->
+  </div>
+{% endblock body %}

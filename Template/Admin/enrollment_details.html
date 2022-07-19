@@ -1,0 +1,294 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Enrollments {% endblock %}
+
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            margin: 13px 0px;
+            font-size: 18px;
+            justify-content: space-between;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+<h1>Application Details</h1>
+<hr style="margin: 20px 0px;">
+<div class="space-between">
+    <p>ID</p>
+    <p>{{enrollment.enrollment_id}}</p>
+</div>
+<div class="space-between">
+    <p>Password</p>
+    <p>{{enrollment.password}}</p>
+</div>
+<div class="space-between">
+    <p>First Name</p>
+    <p>{{enrollment.first_name}}</p>
+</div>
+<div class="space-between">
+    <p>Middle Name</p>
+    {% if middle_name is not None %}
+        <p>{{enrollment.middle_name}}</p>
+    {% else %}
+        <p>N / A</p>
+    {% endif %}
+</div>
+<div class="space-between">
+    <p>Last Name</p>
+    <p>{{enrollment.last_name}}</p>
+</div>
+<div class="space-between">
+    <p>Date Of Birth.</p>
+    <p>{{enrollment.dob}}</p>
+</div>
+<div class="space-between">
+    <p>Gender.</p>
+    <p>{{enrollment.gender}}</p>
+</div>
+<div class="space-between">
+    <p>Father Name</p>
+    <p>{{enrollment.father_name}}</p>
+</div>
+<div class="space-between">
+    <p>Marital Status</p>
+    <p>{{enrollment.maritial_status}}</p>
+</div>
+<div class="space-between">
+    <p>Spouse Name</p>
+    {% if spouse_name is not None %}
+        <p>{{enrollment.spouse_name}}</p>
+    {% else %}
+        <p>N / A</p>
+    {% endif %}
+</div>
+<div class="space-between">
+    <p>Applicant Image</p>
+    <p><a target="_blank" href="{{enrollment.profile_image.url}}">{{enrollment.profile_image.url}}</a></p>
+</div>
+<h1 style="margin: 15px 0px; margin-top: 35px;">Address Details</h1>
+<hr>
+<div class="space-between">
+    <p>Address Line 1</p>
+    <p>{{enrollment.address_1}}</p>
+</div>
+<div class="space-between">
+    <p>Address Line 2</p>
+    {% if address_2 is not None %}
+        <p>{{enrollment.address_2}}</p>
+    {% else %}
+        <p>N / A</p>
+    {% endif %}
+</div>
+<div class="space-between">
+    <p>Address Line 3</p>
+    {% if address_3 is not None %}
+        <p>{{enrollment.address_3}}</p>
+    {% else %}
+        <p>N / A</p>
+    {% endif %}
+</div>
+<div class="space-between">
+    <p>Pincode</p>
+    <p>{{enrollment.pincode}}</p>
+</div>
+<div class="space-between">
+    <p>City</p>
+    <p>{{enrollment.city}}</p>
+</div>
+<div class="space-between">
+    <p>State</p>
+    <p>{{enrollment.state}}</p>
+</div>
+<div class="space-between">
+    <p>Post Office</p>
+    <p>{{enrollment.post_office}}</p>
+</div>
+<div class="space-between">
+    <p>Landmark</p>
+    <p>{{enrollment.landmark}}</p>
+</div>
+<div class="space-between">
+    <p>Location</p>
+    <p>{{enrollment.location}}</p>
+</div>
+<div class="space-between">
+    <p>Aadhaar Card Image</p>
+    <p><a target="_blank" href="{{enrollment.aadhar_image.url}}">{{enrollment.aadhar_image.url}}</a></p>
+</div>
+<div class="space-between">
+    <p>ID Proof Image</p>
+    <p><a target="_blank" href="{{enrollment.id_proof.url}}">{{enrollment.id_proof.url}}</a></p>
+</div>
+<h1 style="margin: 15px 0px; margin-top: 35px;">Professional Information</h1>
+<hr>
+<div class="space-between">
+    <p>Educational Qualification</p>
+    <p>{{enrollment.educational_qualification}}</p>
+</div>
+<div class="space-between">
+    <p>Designation</p>
+    <p>{{enrollment.designation}}</p>
+</div>
+<div class="space-between">
+    <p>Total Family Members</p>
+    <p>{{enrollment.family_members}}</p>
+</div>
+<div class="space-between">
+    <p>Monthly Income</p>
+    <p>&#8377; {{enrollment.monthly_income}}</p>
+</div>
+<h1 style="margin: 15px 0px; margin-top: 35px;">Reference Details</h1>
+<hr>
+<div class="space-between">
+    <p>First Name</p>
+    <p>{{enrollment.reference_first_name}}</p>
+</div>
+<div class="space-between">
+    <p>Middle Name</p>
+    {% if reference_middle_name is not None %}
+        <p>{{enrollment.reference_middle_name}}</p>
+    {% else %}
+        <p>N / A</p>
+    {% endif %}
+</div>
+<div class="space-between">
+    <p>Last Name</p>
+    <p>{{enrollment.reference_last_name}}</p>
+</div>
+<div class="space-between">
+    <p>Mobile Number</p>
+    <p>{{enrollment.reference_mobile_number}}</p>
+</div>
+<div class="space-between">
+    <p>Relation</p>
+    <p>{{enrollment.reference_relation}}</p>
+</div>
+<h1 style="margin: 15px 0px; margin-top: 35px;">Product Details</h1>
+<hr>
+<div class="space-between">
+    <p>Product Type</p>
+    <p>{{enrollment.product_type}}</p>
+</div>
+<div class="space-between">
+    <p>Product Cost</p>
+    <p>&#8377; {{enrollment.product_cost}}</p>
+</div>
+<h1 style="margin: 15px 0px; margin-top: 35px;">Bank Details</h1>
+<hr>
+<div class="space-between">
+    <p>IFSC Code</p>
+    <p>{{enrollment.ifsc_code}}</p>
+</div>
+<div class="space-between">
+    <p>Account Holder First Name</p>
+    <p>{{enrollment.account_holder_first_name}}</p>
+</div>
+<div class="space-between">
+    <p>Account Holder Last Name</p>
+    {% if account_holder_middle_name is not None %}
+        <p>{{enrollment.account_holder_middle_name}}</p>
+    {% else %}
+        <p>N / A</p>
+    {% endif %}
+</div>
+<div class="space-between">
+    <p>Account Holder Last Name</p>
+    <p>{{enrollment.account_holder_last_name}}</p>
+</div>
+<div class="space-between">
+    <p>Bank Name</p>
+    <p>{{enrollment.bank_name}}</p>
+</div>
+<div class="space-between">
+    <p>Account Number</p>
+    <p>{{enrollment.account_number}}</p>
+</div>
+<hr>
+<div class="space-between">
+    <p>EMI Scheme Plan</p>
+    <p>{{enrollment.emi_plan}}</p>
+</div>
+<hr>
+<h1 style="margin: 15px 0px; margin-top: 35px;">Product Information</h1>
+<hr>
+<div class="space-between">
+    <p>IMEI No. / Product Image</p>
+    <p><a target="_blank" href="{{enrollment.imei_product_image.url}}">{{enrollment.imei_product_image.url}}</a></p>
+</div>
+<div class="space-between">
+    <p>Product SL No. / Model</p>
+    <p>{{enrollment.product_model_sl_no}}</p>
+</div>
+<hr>
+<div class="space-between">
+    <p>Loan Amount</p>
+    <p>&#8377; {{enrollment.total_amount}}</p>
+</div>
+<div class="space-between">
+    <p>Total Terms</p>
+    <p>{{enrollment.total_terms}}</p>
+</div>
+<div class="space-between">
+    <p>Due Payment Terms</p>
+    <p>{{enrollment.due_amount_terms}}</p>
+</div>
+<div class="space-between">
+    <p>Down Payment Terms</p>
+    <p>{{enrollment.down_payment_terms}}</p>
+</div>
+<div class="space-between">
+    <p>CARD</p>
+    <p>&#8377; {{enrollment.card}}</p>
+</div>
+<div class="space-between">
+    <p>Insurance</p>
+    <p>&#8377; {{enrollment.insurance}}</p>
+</div>
+<div class="space-between">
+    <p>Margin Money</p>
+    <p>&#8377; {{enrollment.margin_money}}</p>
+</div>
+<div class="space-between">
+    <p>Processing Fee</p>
+    <p>&#8377; {{enrollment.processing_fee}}</p>
+</div>
+<div class="space-between">
+    <p>Total Amount</p>
+    <p>&#8377; {{enrollment.total_cost}}</p>
+</div>
+<div class="space-between">
+    <p>Down Payment</p>
+    <p>&#8377; {{enrollment.down_payment}}</p>
+</div>
+<div class="space-between">
+    <p>Due Payment</p>
+    <p>&#8377; {{enrollment.due_payment}}</p>
+</div>
+<div class="space-between">
+    <p>EMI</p>
+    <p>&#8377; {{enrollment.emi}}</p>
+</div>
+<hr>
+<div class="space-between">
+    <p>Status</p>
+    <p>{{enrollment.status}}</p>
+</div>
+
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}

@@ -1,0 +1,329 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Dealers {% endblock %}
+
+{% block head %}
+
+    <style>
+                @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.form-container{
+    width: 40vw;
+    height: max-content;
+    background: #fff;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.431);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+}
+
+.form-container h2{
+    color: rgb(79,68,224);
+    font-size: 1.6rem;
+}
+
+.form-container h2 i{
+    font-size: 1.8rem;
+    padding-left: 0.1rem;
+}
+
+.input{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 0.7rem;
+}
+
+.input input{
+    width: 100%;
+    height: 50px;
+    font-family: "Poppins", sans-serif;
+    padding-top: 1.1rem;
+    padding-left: 14px;
+    outline: none;
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+.input-2 input{
+    width: 100%;
+    height: 50px;
+    font-family: "Poppins", sans-serif;
+    padding-left: 14px;
+    padding-top: 5px;
+    outline: none;
+    border: 1px solid rgb(79,68,224);
+    border-radius: 3px;
+    transition: 0.2s;
+}
+
+.input label{
+    position: absolute;
+    top: 25%;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    color: #8c8c8c;
+    transition: 0.2s;
+}
+
+.input input:focus ~ label, .input input:valid ~ label{
+    top: 10%;
+    font-size: 0.8rem;
+    color: #000;
+} 
+
+.input input:focus{
+    border-width: 2px;
+    border-color: rgb(79,68,224);
+}
+button{
+    height: 50px;
+    background: rgb(79,68,224);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 50%;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+.error{
+    width: 100%;
+    background-color: coral;
+    padding: 5px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+}
+.join-link{
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
+
+.join-link a{
+    text-decoration: none;
+    font-weight: bolder;
+    color: rgb(79,68,224);
+}
+.success{
+    width: 100%;
+    background-color: lightgreen;
+    padding: 5px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: green;
+    margin-top: 10px;
+    text-align: center;
+}
+@media(max-width: 900px){
+    .form-container{
+        width: 100% !important;
+    }
+}
+.input-10 input{
+    width: 100%;
+    height: 50px;
+    font-family: "Poppins", sans-serif;
+    padding-left: 14px;
+    padding-top: 5px;
+    outline: none;
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+.input-10 input::placeholder {
+    font-size:16px;
+}
+.input-10{
+    margin-bottom: 20px;
+}
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-container">
+            <div class="intro-text">
+                <h1 style="font-family: 'Poppins', sans-serif">Create Dealer</h1>
+            </div>
+            {% if error %}
+                <p class="error">{{message}}</p>
+            {% endif %}
+            {% if success %}
+                <div class="success">Dealer Created</div>
+                <script>
+                    setInterval(() => {
+                        window.location.href="/admin_dashboard/dealers";
+                    }, 1000);
+                </script>
+            {% endif %}
+            <div class="inputs">
+                <div class="input-2" style="margin-top: 15px;">
+                    <input type="text" class="id" name="id" value="{{id}}" readonly required/>
+                </div>
+                <div class="input" style="margin-top: 15px;">
+                    <input type="text" class="first_name" name="first_name" required/>
+                    <label for="">
+                        First Name *
+                    </label>
+                </div>
+                <div class="input-10" style="margin-top: 15px;">
+                    <input type="text" class="middle_name" name="middle_name" placeholder="Middle Name"/>
+                </div>
+                <div class="input" style="margin-top: 15px;">
+                    <input type="text" class="last_name" name="last_name" required/>
+                    <label for="">
+                        Last Name *
+                    </label>
+                </div>
+                <div class="input" style="margin-top: 15px;">
+                    <input type="date" class="dob" name="dob" required/>
+                    <label for="">
+                        Date Of Birth *
+                    </label>
+                </div>
+                <div class="input-2" style="margin-top: 15px;">
+                    <label>Gender *</label>
+                    <select class="gender" required style="width: 100%; padding: 10px 0px; font-family: 'Poppins', sans-serif; font-size: 16px; border: none; border-bottom: 1px solid;" name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="input" style="margin-top: 15px;">
+                    <input type="text" class="father_name" name="father_name" required/>
+                    <label for="">
+                        Father Name *
+                    </label>
+                </div>
+                <div class="input-2" style="margin-top: 15px;">
+                    <label>Marital Status *</label>
+                    <select onfocus="console.log(this.value); if(this.value == 'Married'){document.querySelector('.spouse_name').style.display = 'block';} else if(this.value == 'Single'){document.querySelector('.spouse_name').style.display = 'none';}" onchange="console.log(this.value); if(this.value == 'Married'){document.querySelector('.spouse_name').style.display = 'block';} else if(this.value == 'Single'){document.querySelector('.spouse_name').style.display = 'none';}" class="marital_status" required style="width: 100%; padding: 10px 0px; font-family: 'Poppins', sans-serif; font-size: 16px; border: none; border-bottom: 1px solid;" name="marital_status">
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                    </select>
+                </div>
+                <div class="input-10" style="margin-top: 15px;">
+                    <input type="text" class="spouse_name" style="display: none;" name="spouse_name" placeholder="Spouse's Name *"/>
+                </div>
+                <div class="input" style="margin-top: 15px;">
+                    <input type="text" class="shop_name" name="shop_name" required/>
+                    <label for="">
+                        Shop Name *
+                    </label>
+                </div>
+                <div class="input" style="margin-top: 15px;">
+                    <input type="text" class="shop_location" name="shop_location" required/>
+                    <label for="">
+                        Shop Location *
+                    </label>
+                </div>
+                <div class="input" style="margin-top: 15px;">
+                    <input type="text" class="qualification" name="qualification" required/>
+                    <label for="">
+                        Qualification *
+                    </label>
+                </div>
+                <div class="input" style="margin-top: 15px;">
+                    <input type="text" class="password" name="password" required/>
+                    <label for="">
+                        Dealer Password *
+                    </label>
+                </div>
+                <div class="input-11" style="margin-top: 15px;">
+                    <label style="font-family: 'Poppins', sans-serif;">Applicant Photo *</label><br>
+                    <input style="margin-top: 10px; font-family: 'Poppins', sans-serif;" type="file" required name="applicant_photo"/>
+                </div>
+                <div class="input-11" style="margin-top: 15px;">
+                    <label style="font-family: 'Poppins', sans-serif;">Shop Photo *</label><br>
+                    <input style="margin-top: 10px; font-family: 'Poppins', sans-serif;" type="file" required name="shop_photo"/>
+                </div>                
+                <div class="input-11" style="margin-top: 15px;">
+                    <label style="font-family: 'Poppins', sans-serif;">Aadhar Card Front *</label><br>
+                    <input style="margin-top: 10px; font-family: 'Poppins', sans-serif;" type="file" required name="aadhaar"/>
+                </div>
+                <div class="input-11" style="margin-top: 15px;">
+                    <label style="font-family: 'Poppins', sans-serif;">Aadhar Card Back *</label><br>
+                    <input style="margin-top: 10px; font-family: 'Poppins', sans-serif;" type="file" required name="aadhaar_back"/>
+                </div>
+                <div class="input-11" style="margin-top: 15px;">
+                    <label style="font-family: 'Poppins', sans-serif;">Voter-ID *</label><br>
+                    <input style="margin-top: 10px; font-family: 'Poppins', sans-serif;" type="file" required name="voter_id"/>
+                </div>
+                <div class="input-11" style="margin-top: 15px;">
+                    <label style="font-family: 'Poppins', sans-serif;">PAN Card *</label><br>
+                    <input style="margin-top: 10px; font-family: 'Poppins', sans-serif;" type="file" required name="pan_card"/>
+                </div>
+                <div class="input-11" style="margin-top: 15px;">
+                    <label style="font-family: 'Poppins', sans-serif;">GST *</label><br>
+                    <input style="margin-top: 10px; font-family: 'Poppins', sans-serif;" type="file" required name="gst"/>
+                </div>
+                <div class="input-11" style="margin-top: 15px;">
+                    <label style="font-family: 'Poppins', sans-serif;">Bill Book *</label><br>
+                    <input style="margin-top: 10px; font-family: 'Poppins', sans-serif;" type="file" required name="bill_book"/>
+                </div>
+            </div>
+
+            <h3 style="font-family: 'Poppins', sans-serif; margin: 10px 0px; font-size: 20px;">Bank Details :</h3>
+
+            <div class="input" style="margin-top: 15px;">
+                <input type="text" class="ifsc_code" name="ifsc_code" required/>
+                <label for="">
+                    IFSC Code *
+                </label>
+            </div>
+            <div class="input" style="margin-top: 10px;">
+                <input type="text" class="account_holder_first_name" name="account_holder_first_name" required/>
+                <label for="">
+                    Account Holder First Name *
+                </label>
+            </div>
+            <div class="input-10">
+                <input type="text" class="account_holder_middle_name" name="account_holder_middle_name" placeholder="Account Holder Middle Name"/>
+            </div>
+            <div class="input">
+                <input type="text" class="account_holder_last_name" name="account_holder_last_name" required/>
+                <label for="">
+                    Account Holder Last Name *
+                </label>
+            </div>
+            <div class="input">
+                <input type="number" class="account_number" name="account_number" required/>
+                <label for="">
+                    Account Number *
+                </label>
+            </div>
+            <div class="input">
+                <input type="text" class="bank_name" name="bank_name" required/>
+                <label for="">
+                    Bank Name *
+                </label>
+            </div>
+    
+            <button type="submit">Create</button>
+        </form>
+        </div>
+</div>
+
+<script>
+    function marital_status() {
+        value = document.querySelector(".marital_status").value
+        if (value == "Married"){
+            document.querySelector(".spouse_name").style.display = "block";
+        }
+        else{
+            document.querySelector(".spouse_name").style.display = "none";
+        }
+    }
+</script>
+{% endblock body %}

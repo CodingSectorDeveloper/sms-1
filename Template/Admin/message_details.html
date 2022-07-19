@@ -1,0 +1,50 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Message {% endblock %}
+
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            margin: 13px 0px;
+            font-size: 18px;
+            justify-content: space-between;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+<h1>{{message.name}}</h1>
+<hr style="margin: 20px 0px;">
+<div class="space-between">
+    <p>Name</p>
+    <p>{{message.name}}</p>
+</div>
+<div class="space-between">
+    <p>Subject</p>
+    <p>{{message.subject}}</p>
+</div>
+<div class="space-between">
+    <p>Email Address</p>
+    <p>{{message.email}}</p>
+</div>
+<div class="space-between">
+    <u><b><p>Message :-</p></b></u>
+</div>
+<p>{{message.message}}</p>
+
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}

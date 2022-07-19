@@ -1,0 +1,285 @@
+{% extends "dealer_dashboard.html" %}
+
+{% block title %} Enrollments {% endblock %}
+
+{% block head %}
+
+    <style>
+                @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.form-container{
+    width: 40vw;
+    height: max-content;
+    background: #fff;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.431);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+}
+
+.form-container h2{
+    color: rgb(79,68,224);
+    font-size: 1.6rem;
+}
+
+.form-container h2 i{
+    font-size: 1.8rem;
+    padding-left: 0.1rem;
+}
+
+.input{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 0.7rem;
+}
+
+.input input{
+    width: 100%;
+    height: 50px;
+    font-family: "Poppins", sans-serif;
+    padding-top: 1.1rem;
+    padding-left: 14px;
+    outline: none;
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+.input-2 input{
+    width: 100%;
+    height: 50px;
+    font-family: "Poppins", sans-serif;
+    padding-left: 14px;
+    padding-top: 5px;
+    outline: none;
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+.input-10 input{
+    width: 100%;
+    height: 50px;
+    font-family: "Poppins", sans-serif;
+    padding-left: 14px;
+    padding-top: 5px;
+    outline: none;
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+.input-10{
+    margin-bottom: 20px;
+}
+.input label{
+    position: absolute;
+    top: 25%;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    color: #8c8c8c;
+    transition: 0.2s;
+}
+.input-10 input::placeholder{
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    color: #8c8c8c;
+    transition: 0.2s;
+}
+
+.input input:focus ~ label, .input input:valid ~ label{
+    top: 10%;
+    font-size: 0.8rem;
+    color: #000;
+} 
+
+.input input:focus{
+    border-width: 2px;
+    border-color: rgb(79,68,224);
+}
+button{
+    height: 50px;
+    background: rgb(79,68,224);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 30px;
+    margin-right: 10px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+button i{
+    margin-left: 5px;
+}
+.error{
+    width: 100%;
+    background-color: coral;
+    padding: 5px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+}
+.join-link{
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
+
+.join-link a{
+    text-decoration: none;
+    font-weight: bolder;
+    color: rgb(79,68,224);
+}
+.success{
+    width: 100%;
+    background-color: lightgreen;
+    padding: 5px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: green;
+    margin-top: 10px;
+    text-align: center;
+}
+select:focus{
+    outline: none;
+}
+@media(max-width: 900px){
+    .form-container{
+        width: 100% !important;
+    }
+}
+.buttons-group{
+    display: flex;
+    align-items: center;
+}
+button a{
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        <div class="form-container">
+            <div class="intro-text">
+                <h1 style="font-family: 'Poppins', sans-serif">Application Details</h1>
+            </div>
+            {% if success %}
+                <div class="success">Form Successfully Saved</div>
+            {% endif %}
+            <div class="inputs">
+                <div class="input-10" style="margin-top: 15px;">
+                    <input value="{{enroll_created.password}}" placeholder="Enrollment Password *" type="text" class="password" name="password" required/>
+                </div>
+                <div class="input-10" style="margin-top: 15px;">
+                    <input value="{{enroll_created.first_name}}" placeholder="First Name *" type="text" class="first_name" name="first_name" required/>
+                </div>
+                <div class="input-10" style="margin-top: 15px;">
+                    <input value="{{enroll_created.middle_name}}" type="text" class="middle_name" name="middle_name" placeholder="Middle Name"/>
+                </div>
+                <div class="input-10" style="margin-top: 15px;">
+                    <input value="{{enroll_created.last_name}}" placeholder="Last Name *" type="text" class="last_name" name="last_name" required/>
+                </div>
+                <div class="input-11" style="margin-top: 15px;">
+                    <label style="font-family: 'Poppins', sans-serif;">Application Photo *</label><br>
+                    <input value="{{enroll_created.image}}" accept="image/*" capture="camera" style="margin-top: 10px; font-family: 'Poppins', sans-serif;" type="file" name="profile_image"/>
+                </div>
+                <div class="input-10" style="margin-top: 15px;">
+                    <label style="padding-bottom: 5px;" for="">Date Of Birth *</label>
+                    <input value="{{enroll_created.dob|date:'Y-m-d'}}" type="date" class="dob" name="dob" placeholder="Date Of Birth *"/>
+                </div>
+                <div class="input-10" style="margin-top: 15px;">
+                    <label>Select Gender *</label>
+                    <select class="gender" required style="width: 100%; padding: 10px 0px; font-family: 'Poppins', sans-serif; font-size: 16px; border: none; border-bottom: 1px solid;" name="gender">
+                        {% if enroll_created.gender == 'Male' %}
+                        <option value="Male" selected >Male</option>
+                        <option value="Female" >Female</option>
+                        {% endif %}
+                        {% if enroll_created.gender == 'Female' %}
+                        <option value="Male" >Male</option>
+                        <option value="Female" selected >Female</option>
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="input-10" style="margin-top: 15px;">
+                    <input placeholder="Mobile Number *" type="text" value="{{enroll_created.mobile_number}}" class="mobile_number" name="mobile_number" required/>
+                </div>
+                <div class="input-10" style="margin-top: 15px;">
+                    <input value="{{enroll_created.father_name}}" placeholder="Father Name *" type="text" class="father_name" name="father_name" required/>
+                </div>
+                <div class="input-10" style="margin-top: 15px;">
+                    <label>Marital Status *</label>
+                    <select onchange="console.log(this.value); if(this.value == 'Married'){document.querySelector('.spouse_name').style.display = 'block';} else if(this.value == 'Single'){document.querySelector('.spouse_name').style.display = 'none';}" class="maritial_status" required style="width: 100%; padding: 10px 0px; font-family: 'Poppins', sans-serif; font-size: 16px; border: none; border-bottom: 1px solid;" name="maritial_status">
+                        {% if enroll_created.maritial_status == "Married" %}
+                        <option value="Single">Single</option>
+                        <option value="Married" selected>Married</option>
+                        {% endif %}
+                        {% if enroll_created.maritial_status == "Single" %}
+                        <option value="Single" selected >Single</option>
+                        <option value="Married">Married</option>
+                        {% endif %}
+                    </select>
+                </div>
+
+                <div class="input-10" style="margin-top: 15px;">
+                    <input value="{{enroll_created.spouse_name}}" type="text" class="spouse_name" style="display: none;" name="spouse_name" placeholder="Spouse's Name *"/>
+                </div>
+            </div>
+    
+            <div class="buttons-group">
+                <button type="submit">Save</button>
+                <button type="button" onclick="next()">Next</button>
+                <button type="button" onclick="preview()">Preview</button>
+            </div>
+        </form>
+        </div>
+</div>
+
+<script>
+        django_value = "{{enroll_created.maritial_status}}";
+        console.log("Yo");
+        if(django_value == "Married"){
+            document.querySelector(".spouse_name").style.display = "block";
+        }
+    function maritial_status() {
+        status = document.querySelector(".maritial_status").value;
+        if(value == "Married" || django_value == "Married"){
+            document.querySelector(".spouse_name").style.display = "block";
+        }
+        else if(value == "Single"){
+            document.querySelector(".spouse_name").style.display = "none";
+        }
+    }
+    function reset() {
+        location.reload()
+    }
+    function preview() {
+        if("{{id}}" == ""){
+            alert("Please Fill Up And Save The Form To See The Preview")
+        }
+        else{
+            window.open("/dealer_dashboard/preview_first/{{id}}", "_blank");
+        }
+            
+    }
+    function next() {
+        window.location.href="/dealer_dashboard/kyc/{{id}}";
+    }
+</script>
+{% endblock body %}

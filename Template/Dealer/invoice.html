@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Receipt Of Booking - Demo</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		.container {
+			padding-top: 20px;
+		}
+
+		h1 {
+			font-size: 40px;
+			margin-bottom: 0px;
+			color: black;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            border-bottom: 1px solid;
+			text-align: center;
+		}
+		h2{
+			font-size: 20px;
+			margin-bottom: 0px;
+			color: #272727;
+		}
+		.right{
+			margin-left: 370px;
+		}
+
+		.small{
+			margin-top: 6px;
+			font-size: 16px;
+			margin-bottom: 0px;
+			color: #272727;
+			margin-left: 15px;
+
+		}
+		table, tr, td{
+			border: 0.5px solid black;
+		}
+		td{
+			padding: 5px 0px;
+			padding-left: 6px;
+			font-size: 12px;
+			padding-bottom: 2px;
+		}
+		p{
+			font-size:15px;
+			margin-bottom: 0px;
+		}
+	</style>
+
+</head>
+<body>
+
+	<div class="container">
+		<h1>SMS Credit</h1>
+		<p><b>UMRN: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;">{{enrollment.urmn}}</td>
+			</tr>
+		</table>
+		<p><b>Bank A/C Number: </b></p>
+		<table>
+			<tr>
+				<td style="padding-left: 5px;width: 100%;">{{enrollment.account_number}}</td>
+			</tr>
+		</table>
+		<p><b>Bank Name: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;">{{enrollment.bank_name}}</td>
+			</tr>
+		</table>
+		<p><b>IFSC Code: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.ifsc_code}}</td>
+			</tr>
+		</table>
+		<p><b>Of Rupees: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.total_amount}}</td>
+			</tr>
+		</table>
+		<p><b>Prospect No. : </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.prospect_no}}</td>
+			</tr>
+		</table>
+		<p><b>Phone No. : </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.mobile_number}}</td>
+			</tr>
+		</table>
+		<p><b>I Agree for the debit of mandate processing charges by the bank whom I am authorizing to my debit my account as per latest schedule of charges of the bank. PERIOD</b></p>
+		<p><b>From :</b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.period_from}}</td>
+			</tr>
+		</table>
+		<p><b>To  :</b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.period_to}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="container">
+		<h1>SMS Credit</h1>
+		<p><b>UMRN: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;">{{enrollment.urmn}}</td>
+			</tr>
+		</table>
+		<p><b>Bank A/C Number: </b></p>
+		<table>
+			<tr>
+				<td style="padding-left: 5px;width: 100%;">{{enrollment.account_number}}</td>
+			</tr>
+		</table>
+		<p><b>Bank Name: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;">{{enrollment.bank_name}}</td>
+			</tr>
+		</table>
+		<p><b>IFSC Code: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.ifsc_code}}</td>
+			</tr>
+		</table>
+		<p><b>Of Rupees: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.total_amount}}</td>
+			</tr>
+		</table>
+		<p><b>Prospect No. : </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.prospect_no}}</td>
+			</tr>
+		</table>
+		<p><b>Phone No. : </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.mobile_number}}</td>
+			</tr>
+		</table>
+		<p><b>I Agree for the debit of mandate processing charges by the bank whom I am authorizing to my debit my account as per latest schedule of charges of the bank. PERIOD</b></p>
+		<p><b>From :</b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.period_from}}</td>
+			</tr>
+		</table>
+		<p><b>To  :</b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.period_to}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="container">
+		<h1>SMS Credit</h1>
+		<p><b>UMRN: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;">{{enrollment.urmn}}</td>
+			</tr>
+		</table>
+		<p><b>Bank A/C Number: </b></p>
+		<table>
+			<tr>
+				<td style="padding-left: 5px;width: 100%;">{{enrollment.account_number}}</td>
+			</tr>
+		</table>
+		<p><b>Bank Name: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;">{{enrollment.bank_name}}</td>
+			</tr>
+		</table>
+		<p><b>IFSC Code: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.ifsc_code}}</td>
+			</tr>
+		</table>
+		<p><b>Of Rupees: </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.total_amount}}</td>
+			</tr>
+		</table>
+		<p><b>Prospect No. : </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.prospect_no}}</td>
+			</tr>
+		</table>
+		<p><b>Phone No. : </b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.mobile_number}}</td>
+			</tr>
+		</table>
+		<p><b>I Agree for the debit of mandate processing charges by the bank whom I am authorizing to my debit my account as per latest schedule of charges of the bank. PERIOD</b></p>
+		<p><b>From :</b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.period_from}}</td>
+			</tr>
+		</table>
+		<p><b>To  :</b></p>
+		<table>
+			<tr>
+				<td style="width: 100%;padding-left: 5px;border: 1.5px solid black;">{{enrollment.period_to}}</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+
+</html>
+

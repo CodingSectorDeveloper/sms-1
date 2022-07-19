@@ -1,0 +1,347 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Enrollments {% endblock %}
+
+{% block head %}
+
+    <style>
+                @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.form-container{
+    width: 40vw;
+    height: max-content;
+    background: #fff;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.431);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+}
+
+.form-container h2{
+    color: rgb(79,68,224);
+    font-size: 1.6rem;
+}
+
+.form-container h2 i{
+    font-size: 1.8rem;
+    padding-left: 0.1rem;
+}
+
+.input{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 0.7rem;
+}
+
+.input input{
+    width: 100%;
+    height: 50px;
+    font-family: "Poppins", sans-serif;
+    padding-top: 1.1rem;
+    padding-left: 14px;
+    outline: none;
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+.input-2 input{
+    width: 100%;
+    height: 50px;
+    font-family: "Poppins", sans-serif;
+    padding-left: 14px;
+    padding-top: 5px;
+    outline: none;
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+.input-10 input{
+    width: 100%;
+    height: 50px;
+    font-family: "Poppins", sans-serif;
+    padding-left: 14px;
+    padding-top: 5px;
+    outline: none;
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+.input-10{
+    margin-bottom: 20px;
+}
+.input label{
+    position: absolute;
+    top: 25%;
+    left: 15px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    color: #8c8c8c;
+    transition: 0.2s;
+}
+.input-10 input::placeholder{
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    color: #8c8c8c;
+    transition: 0.2s;
+}
+
+.input input:focus ~ label, .input input:valid ~ label{
+    top: 10%;
+    font-size: 0.8rem;
+    color: #000;
+} 
+
+.input input:focus{
+    border-width: 2px;
+    border-color: rgb(79,68,224);
+}
+button{
+    height: 50px;
+    background: rgb(79,68,224);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 30px;
+    margin-right: 10px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+button i{
+    margin-left: 5px;
+}
+.error{
+    width: 100%;
+    background-color: coral;
+    padding: 5px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+}
+.join-link{
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
+
+.join-link a{
+    text-decoration: none;
+    font-weight: bolder;
+    color: rgb(79,68,224);
+}
+.success{
+    width: 100%;
+    background-color: lightgreen;
+    padding: 5px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: green;
+    margin-top: 10px;
+    text-align: center;
+}
+select:focus{
+    outline: none;
+}
+@media(max-width: 900px){
+    .form-container{
+        width: 100% !important;
+    }
+}
+.buttons-group{
+    display: flex;
+    align-items: center;
+}
+button a{
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        <div class="form-container">
+            <div class="intro-text">
+                <h1 style="font-family: 'Poppins', sans-serif">Product Details</h1>
+            </div>
+            {% if success %}
+                <div class="success">Form Successfully Saved</div>
+            {% endif %}
+            <div class="inputs">
+                <div class="input-2" style="margin-top: 15px;">
+                    <label>Product Type *</label>
+                    <select class="product_type" required style="width: 100%; padding: 10px 0px; font-family: 'Poppins', sans-serif; font-size: 16px; border: none; border-bottom: 1px solid;" name="product_type">
+                        {% if enrollment.product_type == "Digital-Mobile" %}
+                            <option value="Digital-Mobile" selected>Digital-Mobile</option>
+                            <option value="CD Product - LED">CD Product - LED</option>
+                            <option value="TV">TV</option>
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Mixer Machine">Mixer Machine</option>
+                            <option value="Home Theater">Home Theater</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Others">Others</option>
+                        {% elif enrollment.product_type == "CD Product - LED" %}
+                            <option value="Digital-Mobile">Digital-Mobile</option>
+                            <option value="CD Product - LED" selected>CD Product - LED</option>
+                            <option value="TV">TV</option>
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Mixer Machine">Mixer Machine</option>
+                            <option value="Home Theater">Home Theater</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Others">Others</option>
+                        {% elif enrollment.product_type == "TV" %}
+                            <option value="Digital-Mobile">Digital-Mobile</option>
+                            <option value="CD Product - LED">CD Product - LED</option>
+                            <option value="TV" selected>TV</option>
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Mixer Machine">Mixer Machine</option>
+                            <option value="Home Theater">Home Theater</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Others">Others</option>
+                        {% elif enrollment.product_type == "Refrigerator" %}
+                            <option value="Digital-Mobile">Digital-Mobile</option>
+                            <option value="CD Product - LED">CD Product - LED</option>
+                            <option value="TV">TV</option>
+                            <option value="Refrigerator" selected>Refrigerator</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Mixer Machine">Mixer Machine</option>
+                            <option value="Home Theater">Home Theater</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Others">Others</option>
+                        {% elif enrollment.product_type == "Laptop" %}
+                            <option value="Digital-Mobile">Digital-Mobile</option>
+                            <option value="CD Product - LED">CD Product - LED</option>
+                            <option value="TV">TV</option>
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="Laptop" selected>Laptop</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Mixer Machine">Mixer Machine</option>
+                            <option value="Home Theater">Home Theater</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Others">Others</option>
+                        {% elif enrollment.product_type == "Printer" %}
+                            <option value="Digital-Mobile">Digital-Mobile</option>
+                            <option value="CD Product - LED">CD Product - LED</option>
+                            <option value="TV">TV</option>
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Printer" selected>Printer</option>
+                            <option value="Mixer Machine">Mixer Machine</option>
+                            <option value="Home Theater">Home Theater</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Others">Others</option>
+                        {% elif enrollment.product_type == "Mixer Machine" %}
+                            <option value="Digital-Mobile">Digital-Mobile</option>
+                            <option value="CD Product - LED">CD Product - LED</option>
+                            <option value="TV">TV</option>
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Mixer Machine" selected>Mixer Machine</option>
+                            <option value="Home Theater">Home Theater</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Others">Others</option>
+                        {% elif enrollment.product_type == "Home Theater" %}
+                            <option value="Digital-Mobile">Digital-Mobile</option>
+                            <option value="CD Product - LED">CD Product - LED</option>
+                            <option value="TV">TV</option>
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Mixer Machine">Mixer Machine</option>
+                            <option value="Home Theater" selected>Home Theater</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Others">Others</option>
+                        {% elif enrollment.product_type == "Computer" %}
+                            <option value="Digital-Mobile">Digital-Mobile</option>
+                            <option value="CD Product - LED">CD Product - LED</option>
+                            <option value="TV">TV</option>
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Mixer Machine">Mixer Machine</option>
+                            <option value="Home Theater">Home Theater</option>
+                            <option value="Computer" selected>Computer</option>
+                            <option value="Others">Others</option>
+                        {% elif enrollment.product_type == "Others" %}
+                            <option value="Digital-Mobile">Digital-Mobile</option>
+                            <option value="CD Product - LED">CD Product - LED</option>
+                            <option value="TV">TV</option>
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Mixer Machine">Mixer Machine</option>
+                            <option value="Home Theater">Home Theater</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Others" selected>Others</option>
+                        {% elif enrollment.product_type == "Others" %}
+                            <option value="Digital-Mobile">Digital-Mobile</option>
+                            <option value="CD Product - LED">CD Product - LED</option>
+                            <option value="TV">TV</option>
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Mixer Machine">Mixer Machine</option>
+                            <option value="Home Theater">Home Theater</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Others" selected>Others</option>
+                        {% else %}
+                            <option value="Digital-Mobile">Digital-Mobile</option>
+                            <option value="CD Product - LED">CD Product - LED</option>
+                            <option value="TV">TV</option>
+                            <option value="Refrigerator">Refrigerator</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Mixer Machine">Mixer Machine</option>
+                            <option value="Home Theater">Home Theater</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Others">Others</option>
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="input-10" style="margin-top: 15px;">
+                    <input placeholder="Product Cost *" value="{{enrollment.product_cost}}" type="number" class="product_cost" name="product_cost" required/>
+                </div>
+                <div class="buttons-group">
+                    <button type="submit">Save</button>
+                    <button type="button" onclick="next()">Next</button>
+                </div>
+                </div>
+        </form>
+        </div>
+</div>
+
+<script>
+    function next() {
+        if("{{id}}" == ""){
+            alert("Please Fill Up And Save The Form")
+        }
+        else{
+            window.location.href="/admin_dashboard/bank_details/{{id}}";
+        }
+    }
+</script>
+{% endblock body %}

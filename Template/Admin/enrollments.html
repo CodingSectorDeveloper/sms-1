@@ -1,0 +1,63 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Enrollments {% endblock %}
+
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <div class="space-between">
+        <h1>Enrollments</h1>
+        <a href="/admin_dashboard/get_otp"><i class="plus-icon fas fa-plus"></i></a>
+    </div>
+    <div class="container-div" style="margin-top: 20px;">
+        {% for i in enrollments %}
+        <div class="space-between">
+            <p style="margin: 5px 0px;">{{forloop.counter}}. <a style="color: black; text-decoration: none;">{{i.first_name}} {{i.middle_name}} {{i.last_name}}</a></p>
+            <div style="display: flex; align-items: center;">
+                {% if i.status == "pending" %}
+                    <p style="color: blue; padding: 3px 20px; border-radius: 20px; margin-right: 5px; font-family:  'Poppins', sans-serif;">Pending</p>
+                {% endif %}
+                {% if i.status == "rejected" %}
+                    <p style="color: red; padding: 3px 20px; border-radius: 20px; margin-right: 5px; font-family:  'Poppins', sans-serif;">Rejected</p>
+                {% endif %}
+                {% if i.status == "approved" %}
+                    <p style="color: green; padding: 3px 20px; border-radius: 20px; margin-right: 5px; font-family:  'Poppins', sans-serif;">Approved</p>
+                {% endif %}
+                <a href="/admin_dashboard/edit_enrollment/{{i.id}}" style="color: white; background-color: blueviolet; text-decoration: none; padding: 10px 20px; margin: 10px 10px;">Edit</a>
+                <a href="/admin_dashboard/enrollment_details/{{i.id}}" style="color: white; background-color: blue; text-decoration: none; padding: 10px 20px; margin: 10px 10px;">Details</a>
+            </div>
+
+        </div>
+        <script>
+            document.querySelector(".fa-trash-alt").onclick = () => {
+                swal('Important Warning','If You Delete The Dealer With This Id - {{i.dealer_id}}, All The Enrollments Created By This Dealer Will Be Deleted As Well. Are You Sure To Delete This Dealer','warning', {'buttons': true, 'dangerMode': true}).then((value) => {
+                    if(value){
+                        window.location.href="/admin_dashboard/delete_dealer/{{i.id}}";
+                    }
+                })
+            }
+        </script>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}

@@ -1,0 +1,97 @@
+{% extends "admin_base.html" %}
+
+{% block title %} employees {% endblock %}
+
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            margin: 13px 0px;
+            font-size: 18px;
+            justify-content: space-between;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+<h1>Employee Details</h1>
+<hr style="margin: 20px 0px;">
+<div class="space-between">
+    <p>ID</p>
+    <p>{{employee.employee_id}}</p>
+</div>
+<div class="space-between">
+    <p>Password</p>
+    <p>{{employee.password}}</p>
+</div>
+<div class="space-between">
+    <p>First Name</p>
+    <p>{{employee.first_name}}</p>
+</div>
+<div class="space-between">
+    <p>Middle Name</p>
+    {% if middle_name is not None %}
+        <p>{{employee.middle_name}}</p>
+    {% else %}
+        <p>N / A</p>
+    {% endif %}
+</div>
+<div class="space-between">
+    <p>Last Name</p>
+    <p>{{employee.last_name}}</p>
+</div>
+<div class="space-between">
+    <p>Date Of Birth.</p>
+    <p>{{employee.dob}}</p>
+</div>
+<div class="space-between">
+    <p>Gender.</p>
+    <p>{{employee.gender}}</p>
+</div>
+<div class="space-between">
+    <p>Father Name</p>
+    <p>{{employee.father_name}}</p>
+</div>
+<div class="space-between">
+    <p>Marital Status</p>
+    <p>{{employee.marital_status}}</p>
+</div>
+<div class="space-between">
+    <p>Experience</p>
+    <p>{{employee.marital_status}}</p>
+</div>
+<div class="space-between">
+    <p>Religion</p>
+    <p>{{employee.marital_status}}</p>
+</div>
+<div class="space-between">
+    <p>Qualification</p>
+    <p>{{employee.marital_status}}</p>
+</div>
+<div class="space-between">
+    <p>Spouse Name</p>
+    {% if spouse_name is not None %}
+        <p>{{employee.spouse_name}}</p>
+    {% else %}
+        <p>N / A</p>
+    {% endif %}
+</div>
+<div class="space-between">
+    <p>Applicant Image</p>
+    <p><a target="_blank" href="{{employee.applicant_photo.url}}">{{employee.applicant_photo.url}}</a></p>
+</div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}

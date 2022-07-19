@@ -1,0 +1,55 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Dealers {% endblock %}
+
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <div class="space-between">
+        <h1>Dealers</h1>
+        <a href="/employee_dashboard/create_dealer"><i class="plus-icon fas fa-plus"></i></a>
+    </div>
+    <div class="container-div" style="margin-top: 20px;">
+        {% for i in dealers %}
+        <div class="space-between">
+            <p>{{forloop.counter}}. {{i.dealer_id}} - {{i.password}}</p>
+            <div>
+                <a href="/employee_dashboard/dealer_details/{{i.id}}" style="color: white; background-color: blue; text-decoration: none; padding: 10px 20px; margin: 10px 10px;">Details</a>
+                <i class="fas fa-trash-alt"
+                style="color: red;"
+                ></i>
+            </div>
+        </div>
+        <script>
+            document.querySelector(".fa-trash-alt").onclick = () => {
+                swal('Important Warning','If You Delete The Dealer With This Id - {{i.dealer_id}}, All The Enrollments Created By This Dealer Will Be Deleted As Well. Are You Sure To Delete This Dealer','warning', {'buttons': true, 'dangerMode': true}).then((value) => {
+                    if(value){
+                        window.location.href="/employee_dashboard/delete_dealer/{{i.id}}";
+                    }
+                })
+            }
+        </script>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}

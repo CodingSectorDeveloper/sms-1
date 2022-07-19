@@ -1,0 +1,36 @@
+{% extends "dealer_dashboard.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+<div class="main__container">
+    <!-- MAIN TITLE STARTS HERE -->
+
+    <div class="main__title">
+      <img src="assets/hello.svg" alt="" />
+      <div class="main__greeting">
+        <h1>Hello {{request.user.username}}</h1>
+        <p>Welcome to your dashboard</p>
+      </div>
+    </div>
+
+    <!-- MAIN TITLE ENDS HERE -->
+
+    <!-- MAIN CARDS STARTS HERE -->
+    <div class="main__cards">
+      <div class="card">
+        <span class="font-bold text-title">{{enroll}}</span>
+        <div class="card_inner">
+          <p class="text-primary-p">Number of Enrollments</p>
+        </div>
+      </div>
+
+      <div class="card">
+          <span class="font-bold text-title">{{emi}}</span>
+        <div class="card_inner">
+          <p class="text-primary-p">Number of EMIs</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock body %}

@@ -1,0 +1,33 @@
+{% extends "customer_base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+<div class="main__container">
+    <!-- MAIN TITLE STARTS HERE -->
+
+    <div class="main__title">
+      <img src="assets/hello.svg" alt="" />
+      <div class="main__greeting">
+        <h1>Hello {{request.user.username}}</h1>
+        <p>Welcome to your dashboard</p>
+      </div>
+      <h1 style="margin-top: 20px;">Your Accounts</h1>
+      <table>
+        <tr>
+          <th>Total Amount</th>
+          <th>Amount Paid</th>
+          <th>Amount Left</th>
+        </tr>
+        <tr>
+          <td>{{enrollment_account.enrollment.total_amount}}</td>
+          <td>{{enrollment_account.amount_paid}}</td>
+          <td>{{enrollment_account.amount_left}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- MAIN TITLE ENDS HERE -->
+
+  </div>
+{% endblock body %}

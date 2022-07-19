@@ -1,0 +1,149 @@
+{% extends "employee_base.html" %}
+
+{% block title %} dealers {% endblock %}
+
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            margin: 13px 0px;
+            font-size: 18px;
+            justify-content: space-between;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+<h1>Dealer Details</h1>
+<hr style="margin: 20px 0px;">
+<div class="space-between">
+    <p>ID</p>
+    <p>{{dealer.dealer_id}}</p>
+</div>
+<div class="space-between">
+    <p>Password</p>
+    <p>{{dealer.password}}</p>
+</div>
+<div class="space-between">
+    <p>First Name</p>
+    <p>{{dealer.first_name}}</p>
+</div>
+<div class="space-between">
+    <p>Middle Name</p>
+    {% if middle_name is not None %}
+        <p>{{dealer.middle_name}}</p>
+    {% else %}
+        <p>N / A</p>
+    {% endif %}
+</div>
+<div class="space-between">
+    <p>Last Name</p>
+    <p>{{dealer.last_name}}</p>
+</div>
+<div class="space-between">
+    <p>Date Of Birth.</p>
+    <p>{{dealer.dob}}</p>
+</div>
+<div class="space-between">
+    <p>Gender.</p>
+    <p>{{dealer.gender}}</p>
+</div>
+<div class="space-between">
+    <p>Father Name</p>
+    <p>{{dealer.father_name}}</p>
+</div>
+<div class="space-between">
+    <p>Marital Status</p>
+    <p>{{dealer.marital_status}}</p>
+</div>
+<div class="space-between">
+    <p>Qualification</p>
+    <p>{{dealer.marital_status}}</p>
+</div>
+<div class="space-between">
+    <p>Shop Name</p>
+    <p>{{dealer.shop_name}}</p>
+</div>
+<div class="space-between">
+    <p>Shop Location</p>
+    <p>{{dealer.shop_location}}</p>
+</div>
+<div class="space-between">
+    <p>IFSC Code</p>
+    <p>{{dealer.ifsc_code}}</p>
+</div>
+<div class="space-between">
+    <p>Account Holder First Name</p>
+    <p>{{dealer.account_holder_first_name}}</p>
+</div>
+<div class="space-between">
+    <p>Account Holder Middle Name</p>
+    <p>{{dealer.account_holder_middle_name}}</p>
+</div>
+<div class="space-between">
+    <p>Account Holder Last Name</p>
+    <p>{{dealer.account_holder_last_name}}</p>
+</div>
+<div class="space-between">
+    <p>Bank Name</p>
+    <p>{{dealer.bank_name}}</p>
+</div>
+<div class="space-between">
+    <p>Account Number</p>
+    <p>{{dealer.account_number}}</p>
+</div>
+<div class="space-between">
+    <p>Spouse Name</p>
+    {% if spouse_name is not None %}
+        <p>{{dealer.spouse_name}}</p>
+    {% else %}
+        <p>N / A</p>
+    {% endif %}
+</div>
+<div class="space-between">
+    <p>Applicant Image</p>
+    <p><a target="_blank" href="{{dealer.applicant_photo.url}}">{{dealer.applicant_photo.url}}</a></p>
+</div>
+<div class="space-between">
+    <p>Shop Photo</p>
+    <p><a target="_blank" href="{{dealer.shop_photo.url}}">{{dealer.shop_photo.url}}</a></p>
+</div>
+<div class="space-between">
+    <p>Aadhaar Image</p>
+    <p><a target="_blank" href="{{dealer.aadhaar.url}}">{{dealer.aadhaar.url}}</a></p>
+</div>
+<div class="space-between">
+    <p>Aadhaar Back Image</p>
+    <p><a target="_blank" href="{{dealer.aadhaar_back.url}}">{{dealer.aadhaar_back.url}}</a></p>
+</div>
+<div class="space-between">
+    <p>Voter-ID Image</p>
+    <p><a target="_blank" href="{{dealer.voter_id.url}}">{{dealer.voter_id.url}}</a></p>
+</div>
+<div class="space-between">
+    <p>PAN Card Image</p>
+    <p><a target="_blank" href="{{dealer.pan_card.url}}">{{dealer.pan_card.url}}</a></p>
+</div>
+<div class="space-between">
+    <p>GST Image</p>
+    <p><a target="_blank" href="{{dealer.gst.url}}">{{dealer.gst.url}}</a></p>
+</div>
+<div class="space-between">
+    <p>Bill Book Image</p>
+    <p><a target="_blank" href="{{dealer.bill_book.url}}">{{dealer.bill_book.url}}</a></p>
+</div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}
